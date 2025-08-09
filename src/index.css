@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Aturan Aksesibilitas */
+
+/* ==================================== */
+/* Kelas Aksesibilitas (ditambahkan ke <html>) */
+/* ==================================== */
+
+/* Ukuran Teks */
+html.text-small {
+  font-size: 85%; /* Mengurangi ukuran teks dasar */
+}
+
+html.text-large {
+  font-size: 115%; /* Memperbesar ukuran teks dasar */
+}
+
+/* Kontras Tinggi */
+html.high-contrast {
+  /* Contoh sederhana untuk kontras tinggi */
+  filter: grayscale(100%) contrast(150%);
+  /* Atau ubah warna latar belakang dan teks secara spesifik */
+  /* background-color: #000 !important; */
+  /* color: #FFF !important; */
+}
+
+/* Sorot Tautan */
+html.links-highlighted a {
+  text-decoration: underline !important; 
+  font-weight: bold !important;
+}
+
+/* Mode Grayscale */
+html.grayscale-mode {
+  filter: grayscale(100%) !important;
+}
+
+/* Font Mudah Dibaca */
+html.easy-font {
+  /* Font yang lebih generik dan mudah dibaca */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+/* Sembunyikan Fokus Ring (hati-hati dengan ini, seringkali lebih baik dihindari) */
+html.hide-focus-ring *:focus {
+  outline: none !important;
+}
+
+/* Kurangi Animasi */
+html.reduce-animations *,
+html.reduce-animations *::before,
+html.reduce-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ==================================== */
+/* Skip to Main Content Styling (Tailwind utility classes) */
+/* ==================================== */
+/* sr-only: Screen Reader Only - menyembunyikan secara visual tetapi tetap tersedia untuk screen reader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* focus:not-sr-only: Saat elemen sr-only mendapat fokus, ia akan terlihat */
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Ini adalah kelas yang Anda definisikan di komponen, pastikan sesuai */
+/* Contoh untuk main content agar bisa di-focus */
+main[tabindex="-1"]:focus {
+  outline: none; /* Hilangkan outline default setelah fokus secara terprogram */
+}
